@@ -10,7 +10,6 @@ public class Gradebook
     {
         Scanner in = new Scanner(System.in);
 
-        . . .
 
         boolean done = false;
         while(!done)
@@ -22,17 +21,13 @@ public class Gradebook
                 done = true;
             } else if (input.equals("A"))
             {
-                . . .
 
             } else if (input.equals("R"))
             {
-                . . .
             } else if (input.equals("M"))
             {
-                . . .
             } else if (input.equalsIgnoreCase("P"))
             {
-                . . .
             } else
             {
                 done = true;
