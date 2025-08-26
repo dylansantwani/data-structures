@@ -6,8 +6,7 @@ import java.util.ListIterator;
  * and ListIterator class.
 */
 public class ListDemo
-{
-    public static void main(String[] args)
+{     public static void main(String[] args)
     {
         //used to populate a list
         LinkedList<String> staff = new LinkedList<>();
@@ -26,5 +25,40 @@ public class ListDemo
         //next method also returns the element that the iterator passes over 
         String avenger = iterator.next();
         System.out.println(avenger);
+        iterator.add("T'challia");
+                iterator.add("Bruce");
+        iterator.next();
+        //remove method can only be called after a call to next or previous
+        //it will cuase the illegalstateexception if called before next or previous
+        iterator.remove();
+        System.out.println(staff);
+        iterator.previous();
+        iterator.set("Dr.Strange");
+        //the iterator is then positioned after the element that was added   
+        //the hasnext method returns true if there is another element after the iterator position
+        while (iterator.hasNext())
+        {
+            String n = iterator.next();
+            System.out.println(n);
+        }
+        //enhanced for loops work with linked lists
+        for (String s : staff)
+        {
+            System.out.println(s +  " ");
+        }
+        System.out.println(staff);
+        //cannot modify a list using an interator unless using the iterator's own methods
+        iterator = staff.listIterator();
+        for (String s: staff)
+        {
+           
+           if (s.equals("Tony"))
+           {
+               staff.add("T'Challa");
+
+               
+           }
+        }
+        System.out.println(staff);
     }
 }
