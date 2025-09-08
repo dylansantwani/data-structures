@@ -146,7 +146,8 @@ public class SudokuSolver {
             possibleNums.removeAll(this.cols.get(nextCol));
 
             int squareIdx = (nextRow / M) * M + (nextCol / M);
-            possibleNums.removeAll(this.squares.get(squareIdx));
+
+                possibleNums.removeAll(this.squares.get(squareIdx));
         }
 
         // if there are no possible numbers, we cannot solve the board in its current
