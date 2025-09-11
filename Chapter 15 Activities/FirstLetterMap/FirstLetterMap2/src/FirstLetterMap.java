@@ -12,29 +12,31 @@ public class FirstLetterMap
 {
     public static void main(String[] args)
     {
-        String filename = "src/test1.txt";
+        String filename = "Chapter 15 Activities\\FirstLetterMap\\FirstLetterMap2\\src\\test1.txt";
 
         try (Scanner in = new Scanner(new File(filename)))
         {
 
-            // Create your map here
-            ...
+            Map<Character, String> map = new HashMap<>();
 
             while (in.hasNext())
             {
                 String word = clean(in.next());
                 Character c = word.charAt(0);
 
-                // Update the map here
-                // Modify Worked Example 15.1
-                . . .
+                if (map.get(c) != null) {
+                    map.put(c, map.get(c) + "," + word);
+                } else {
+                    map.put(c, word);
+                }
 
 
             }
 
-            // Print the map here in this form
-            // a: [a, able, aardvark]
-            . . .
+            for (Character key : map.keySet()) {
+                String value = map.get(key); 
+                System.out.println(key + ":" + value);
+            }
         } catch (FileNotFoundException e)
         {
             System.out.println("Cannot open: " + filename);
