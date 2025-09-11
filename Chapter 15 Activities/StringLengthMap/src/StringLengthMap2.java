@@ -25,7 +25,6 @@ public class StringLengthMap2
                 String word = clean(in.next());
                 Integer len = word.length();
                 map.merge(len, word, (a, b) -> a + "," + b);
-                System.out.println(map);
                 // Update the map here
                 // Use the Java 8 merge() method
                 
