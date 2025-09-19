@@ -17,18 +17,59 @@ public class HTMLChecker
 {
     public static void main(String[] args)
     {
-        String filename = "src/TagSample1.html";
+        File filename = "Chapter 15 Activities\\HTMLChecker\\src\\TagSample1.html";
 
         try (Scanner in = new Scanner(new File(filename)))
         {
-            // Your code goes here
-            . . .
+            
+            Stack<String> tags = new Stack<String>();
+            boolean error = false;
 
-
-        } catch (FileNotFoundException e)
-        {
-            System.out.println("Cannot open: " + filename);
+            while (in.hasNext() && !error)
+            {
+                String tag = in.next();
+                if (tag.charAt(1) != '/')
+                {
+                    tags.push(tag);
+                }
+                else
+                {
+                    if (tags.isEmpty())
+                    {
+                        System.out.println("Too many closing tags: " + tag);
+                        error = true;
+                    }
+                    else
+                    {
+                        String openTag = tags.pop();
+                        String expectedCloseTag =
+                            "</" + openTag.substring(1);
+                        if (!tag.equals(expectedCloseTag))
+                        {
+                            System.out.println("Expected " +
+                                expectedCloseTag + " but found " + tag);
+                            error = true;
+                        }
+                    }
+                }
+            }
+            if (!error && !tags.isEmpty())
+            {
+                System.out.println("Missing closing tags:");
+                while (!tags.isEmpty())
+                {
+                    String openTag = tags.pop();
+                    String expectedCloseTag =
+                        "</" + openTag.substring(1);
+                    System.out.println(expectedCloseTag);
+                }
+            }
+            else if (!error)
+            {
+                System.out.println("All tags matched.");
+            }
         }
+     
 
     }
 }
