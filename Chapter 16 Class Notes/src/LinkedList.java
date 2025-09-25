@@ -5,111 +5,113 @@ import java.util.NoSuchElementException;
  * element insertion and removal. This class
  * contains a subset of the methods of the standard
  * java.util.LinkedList class.
-*/
-public class LinkedList
-{
-
+ */
+public class LinkedList {
 
     /**
-        Constructs an empty linked list.
-    */
+     * Constructs an empty linked list.
+     */
+    // first is the first node
+    // if the list is empty then first will be null
+    private Node first;
 
-
-
-
-    /**
-        Returns the first element in the linked list.
-        @return the first element in the linked list
-    */
-
-
-
+    public LinkedList() {
+        this.first = null;
+    }
+   
 
     /**
-        Removes the first element in the linked list.
-        @return the removed element
-    */
-
-
-
-
+     * Returns the first element in the linked list.
+     * 
+     * @return the first element in the linked list
+     */
+    public Object getFirst(){
+        if (this.first == null){
+            throw new NoSuchElementException();
+        }
+        return this.first.data;
+    }
+    //for tommorwo 
+    public Object removeFirst(){
+        if (this.first == null){
+            throw new NoSuchElementException();
+        }
+        Object data = this.first.data;
+        this.first = this.first.next;
+        return data;
+    }
+    /**
+     * Removes the first element in the linked list.
+     * 
+     * @return the removed element
+     */
+    
 
     /**
-        Adds an element to the front of the linked list.
-        @param element the element to add
-    */
-
-
-
-
-
+     * Adds an element to the front of the linked list.
+     * 
+     * @param element the element to add
+     */
+    public void addFirst(Object element) {
+        Node newNode = new Node(element);
+        first = newNode;
+    }
     /**
-        Returns an iterator for iterating through this list.
-        @return an iterator for iterating through this list
-    */
+     * Returns an iterator for iterating through this list.
+     * 
+     * @return an iterator for iterating through this list
+     */
 
 
+    // Class Node
+    static class Node {
+        public Object data;
+        public Node next;
 
-
-
-    //Class Node
-
-
-    class LinkedListIterator //implements ListIterator
+        public Node(Object data) {
+            this.data = data;
+            this.next = null;
+        }
+        
+    }
+    class LinkedListIterator // implements ListIterator
     {
-      //private data
-
-
-        /**
-            Constructs an iterator that points to the front
-            of the linked list.
-        */
-
+        // private data
 
         /**
-            Moves the iterator past the next element.
-            @return the traversed element
-        */
-
-
-
-
+         * Constructs an iterator that points to the front
+         * of the linked list.
+         */
 
         /**
-            Tests if there is an element after the iterator position.
-            @return true if there is an element after the iterator position
-        */
-
-
-        /**
-            Adds an element before the iterator position
-            and moves the iterator past the inserted element.
-            @param element the element to add
-        */
-
-
-
-
-
+         * Moves the iterator past the next element.
+         * 
+         * @return the traversed element
+         */
 
         /**
-            Removes the last traversed element. This method may
-            only be called after a call to the next() method.
-        */
-
-
-
-
-
-
+         * Tests if there is an element after the iterator position.
+         * 
+         * @return true if there is an element after the iterator position
+         */
 
         /**
-            Sets the last traversed element to a different value.
-            @param element the element to set
-        */
+         * Adds an element before the iterator position
+         * and moves the iterator past the inserted element.
+         * 
+         * @param element the element to add
+         */
 
+        /**
+         * Removes the last traversed element. This method may
+         * only be called after a call to the next() method.
+         */
 
+        /**
+         * Sets the last traversed element to a different value.
+         * 
+         * @param element the element to set
+         */
 
-
-    }//LinkedListIterator
-}//LinkedList
+    }// LinkedListIterator
+}// LinkedList
