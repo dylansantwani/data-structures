@@ -34,11 +34,10 @@ public class LinkedList {
     }
 
     public int recursiveSize() {
-        LinkedList copy = this;
-        if (copy.first == null) {
+        if (this.first == null) {
             return 0;
         } else {
-            copy.removeFirst();
+            this.removeFirst();
             return 1 + recursiveSize();
         }
     }
