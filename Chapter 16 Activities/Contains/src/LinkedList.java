@@ -47,6 +47,17 @@ public class LinkedList {
         }
         return false;
     }
+    public static boolean contains(Node start, Object obj){
+        if (start == null) {
+            return false;
+        } 
+        else if (start.data.equals(obj)) {
+            return true;
+        } else {
+            return contains(start.next, obj);
+        }
+    }
+
 
     /**
      * Returns the first element in the linked list.
