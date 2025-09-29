@@ -90,7 +90,7 @@ public class LinkedList {
         }
 
     }
-
+    
     class LinkedListIterator implements ListIterator {
         // private data
         private Node previous;
@@ -137,6 +137,7 @@ public class LinkedList {
                 return first != null;
             } 
             return this.position.next != null;
+        }
 
         /**
          * Adds an element before the iterator position
@@ -187,7 +188,8 @@ public class LinkedList {
         }
         
 
-    }// LinkedListIterator
+    }
 }
-// LinkedList
-}
+
+    // LinkedListIterator
+
