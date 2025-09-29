@@ -24,9 +24,24 @@ public class LinkedList
         Computes the size of the linked list.
         @return the number of elements in the list
     */
-    public int size()
-    {
-       return 1;
+    public int size() {
+        int count = 0;
+        Node current = first;
+        while (current != null) {
+            count++;
+
+            current = current.next;
+        }
+        return count;
+    }
+
+    public int recursiveSize() {
+        if (this.first == null) {
+            return 0;
+        } else {
+            this.removeFirst();
+            return 1 + recursiveSize();
+        }
     }
 
 
