@@ -51,5 +51,6 @@ public class Tree {
         return this.root.size();
     }
 
+    
     // Additional methods will be added in later sections.
 }

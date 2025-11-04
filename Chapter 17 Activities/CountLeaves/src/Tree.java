@@ -63,5 +63,21 @@ public class Tree
         else { return root.size(); }
     }
 
+    public int leafCount(){
+        int count = 0;
+        if (root.children.size() == 0) {
+            return 1;
+        }
+        for (Node child : root.children) { 
+            if (child.children.size() == 0) {
+                count++;
+            } else {
+                Tree subtree = new Tree();
+                subtree.root = child;
+                count += subtree.leafCount();
+            }
+        }
+        return count;
+    }
     // Additional methods will be added in later sections.
 }
