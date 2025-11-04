@@ -111,6 +111,9 @@ public class BinaryTree
                 count++;
             }
         }
+        else{
+            return 0;
+        }
         if (root.left != null) {
             BinaryTree leftSubtree = new BinaryTree();
             leftSubtree.root = root.left;
