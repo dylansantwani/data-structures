@@ -53,4 +53,23 @@ public class Tree {
 
     
     // Additional methods will be added in later sections.
+    /* 
+     * A visitor method is called for each visited node during a tree traversal.
+     */
+    public interface Visitor{
+       void visit(Object data);
+    }
+    //traverse this tree in preorder
+    public void preorder(Visitor visitor){
+        Tree.preorderHelper(this.root, visitor);
+    }
+    private static void preorderHelper(Node n, Visitor v){
+        if (n == null){
+            return;
+        }
+        v.visit(n.data);
+        for (Node child : n.children){
+            preorderHelper(child, v);
+        }
+    }
 }

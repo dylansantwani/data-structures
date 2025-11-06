@@ -71,24 +71,34 @@ public class BinarySearchTree {
      * 
      * @param obj the object to remove
      */
-    public void remove(Comparable obj) { //to complete
+    public void remove(Comparable obj) { // to complete
         if (root.data.equals(obj)) {
-            if (root.left == null && root.right == null){
+            if (root.left == null && root.right == null) {
                 root = null;
-            }
-            else if (root.left != null && root.right == null){
+            } else if (root.left != null && root.right == null) {
                 root = root.left;
-            }
-            else if (root.right != null && root.left == null){
+            } else if (root.right != null && root.left == null) {
                 root = root.right;
+            } else {
+                // go to the nodes right child then all the way to the left then use that node
+                // to replace the root
+                Node leastParent = root;
+                Node least = root.right;
+                while (least.left != null) {
+                    leastParent = least;
+                    least = least.left;
+                }
+                root.data = least.data;
+
+                while (leastParent.left != least) {
+                    leastParent = least;
+                    least = least.left;
+                }
+                leastParent.left = least.right;
             }
-            else{
-                //go to the nodes right child then all the way to the left then use that node to replace the root
-            }
-            
-            
+
         }
-        if (root.left != null){
+        if (root.left != null) {
             if (root.left.data.compareTo(obj) < 0) {
                 return;
             } else {
@@ -96,7 +106,8 @@ public class BinarySearchTree {
                 subtree.root = root.left;
                 subtree.remove(obj);
             }
-        }if (root.right != null){
+        }
+        if (root.right != null) {
             if (root.right.data.compareTo(obj) > 0) {
                 return;
             } else {
@@ -111,7 +122,7 @@ public class BinarySearchTree {
      * Prints the contents of the tree in sorted order.
      */
     public void print() {
-
+        
     }
 
     /**
@@ -120,7 +131,15 @@ public class BinarySearchTree {
      * @param parent the root of the subtree to print
      */
     private static void print(Node parent) {
-
+        //print the tree using inorder traversal
+        if (parent == null){
+            return;
+        }
+        print(parent.left);
+        System.out.println(parent.data + " ");
+        print(parent.right);
+        
+        System.out.println();
     }
 
     /**
@@ -145,11 +164,9 @@ public class BinarySearchTree {
                 } else {
                     this.left.addNode(newNode);
                 }
-            } 
-            else if (newNode.data.compareTo(this.data) == 0){
+            } else if (newNode.data.compareTo(this.data) == 0) {
                 return;
-            }
-            else {
+            } else {
                 if (this.right == null) {
                     this.right = newNode;
                 } else {
